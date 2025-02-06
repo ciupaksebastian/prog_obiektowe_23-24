@@ -1,12 +1,16 @@
 ﻿using ConsoleApp1;
 using System;
+using System.Data;
 
-namespace LibraryApp
+namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
+
+            List<Person> people = [];
+
             Person author = new Person("Jan", "Kowalski", 45);
             Person author1 = new Person("Osoba", "Pierwsza", 50);
             Person author2 = new Person("Osoba", "Druga", 60);
@@ -35,21 +39,77 @@ namespace LibraryApp
             reader3.AddReadBook(book4);
             reader3.AddReadBook(book5);
 
-            reader1.ViewBooks();
-            Console.WriteLine();
-            reader2.ViewBooks();
-            Console.WriteLine();
-            reader3.ViewBooks();
-            Console.WriteLine();
-            author.View();
-            Console.WriteLine();
-            reader1.View();
-            Console.WriteLine();
+            Reviewer reviewer1 = new Reviewer("Recenzent", "Pierwszy", 20);
+            Reviewer reviewer2 = new Reviewer("Recenzent", "Drugi", 29);
+            Reviewer reviewer3 = new Reviewer("Recenzent", "Trzeci", 44);
 
-            Person o = new Reader("Czytelnik", "Testowy", 99);
-            o.View();
+            reviewer3.AddReadBook(book5);
+            reviewer3.AddReadBook(book4);
+
+            reviewer1.AddReadBook(book1);
+            reviewer1.AddReadBook(book4);
+
+            reviewer2.AddReadBook(book2);
+            reviewer2.AddReadBook(book3);
+
+            people.Add(author1);
+            people.Add(reviewer1);
+            people.Add(reviewer2);
+            people.Add(reader1);
+            people.Add(reader2);
+            //reviewer1.Wypisz();
+            //Console.WriteLine();
+
+            //reviewer2.Wypisz();
+            //Console.WriteLine();
+
+            //reviewer3.View();
+            //Console.WriteLine();
+            //reader1.ViewBooks();
+            //Console.WriteLine();
+            //reader2.ViewBooks();
+            //Console.WriteLine();
+            //reader3.ViewBooks();
+            //Console.WriteLine();
+            //author.View();
+            //Console.WriteLine();
+            //reader1.View();
+            //Console.WriteLine();
+
+            //Person o = new Reader("Czytelnik", "Testowy", 99);
+            //o.View();
             //author.View();
             //book.View();
+
+
+            //foreach (var person in people)
+            //{
+            //    person.View();
+            //}
+
+            AdventureBook adventureBook1 = new("Harry Potter and the Philosopher's Stone", author, new DateTime(1997, 6, 26), "Harry Potter");
+            AdventureBook adventureBook2 = new("Harry Potter and the Chamber of Secrets", author, new DateTime(1998, 7, 2), "Harry Potter");
+
+            DocumentaryBook documentaryBook1 = new("Cosmos", new Person("Carl", "Sagan", 62), new DateTime(1980, 10, 1), "Astronomia");
+            DocumentaryBook documentaryBook2 = new("A Brief History of Time", new Person("Stephen", "Hawking", 76), new DateTime(1988, 4, 1), "Fizyka");
+
+            List<Book> books =
+            [
+                adventureBook1,
+                adventureBook2,
+                documentaryBook1,
+                documentaryBook2
+            ];
+
+
+            Reader reader10 = new("Czytelnik", "testowy", 99);
+            reader10.AddReadBook(documentaryBook1);
+            reader10.AddReadBook(book1);
+            reader10.ViewBooks();
+            //foreach (var book in books)
+            //{
+            //    book.View();
+            //}
         }
     }
 }
