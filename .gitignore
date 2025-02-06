@@ -1,0 +1,8 @@
+.vsidx
+bin/
+obj/
+.vs/
+.vscode/
+Thumbs.db
+*.tmp
+*.log
